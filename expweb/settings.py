@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from django.contrib import messages
 import django_heroku
 
 
@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+    'home','userpreferences','userincome','accountcompany',
+    
+   
+    
 ]
 
 MIDDLEWARE = [
@@ -139,6 +142,15 @@ STATICFILES_DIRS=[os.path.join('BASE_DIR','expweb/static')]
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 
+# STATIC_URL = '/static/'                # always
+# STATICFILES_DIRS = [BASE_DIR / 'static']  # only if you have a project‑level “static” folder
+# STATIC_ROOT = BASE_DIR / 'staticfiles'   
+
+
+
+
+
+
 
 
 # Default primary key field type
@@ -146,3 +158,15 @@ STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+MESSAGE_TAGS={
+    messages.ERROR:'danger'
+}
+
+
+#email stuff
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

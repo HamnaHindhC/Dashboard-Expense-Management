@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Company Bank Account Details{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Company Bank Account Details</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Bank Name</th>
+        <th>Account Holder</th>
+        <th>Account Number</th>
+        <th>IFSC Code</th>
+        <th>Branch</th>
+        <th>UPI ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for acc in accounts %}
+      <tr>
+        <td>{{ acc.bank_name }}</td>
+        <td>{{ acc.account_holder_name }}</td>
+        <td>{{ acc.account_number }}</td>
+        <td>{{ acc.ifsc_code }}</td>
+        <td>{{ acc.branch }}</td>
+        <td>{{ acc.upi_id|default:"-" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="text-center">No account details available.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

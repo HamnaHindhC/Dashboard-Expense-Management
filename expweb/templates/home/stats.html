@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+ <style>
+   
+
+    #chartTypeSelector {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid gray;
+      border-radius: 8px;
+      background-color: #fff;
+      color: black;
+      
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+      width: 200px;
+    }
+
+    
+
+    #myChart {
+      max-width: 700px;
+      margin: auto;
+    }
+  </style>
+<div class="container mt-4">
+<div class="row">
+    <div class="col-md-10">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a  href="">Expenses Summary</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Summary</li>
+  </ol>
+</nav>
+</div>
+
+<div class="col-md-2">
+    <a href="{% url 'expenses' %}" class="btn btn-outline-primary">BACK</a>
+</div>
+
+<div>
+  <canvas id="myChart" width="700" height="500"></canvas>
+ <select id="chartTypeSelector" >
+
+  <option value="doughnut">Doughnut</option>
+  <option value="bar">Bar</option>
+  <option value="line">Line</option>
+  <option value="pie">Pie</option>
+  <option value="polarArea">Polar Area</option>
+</select>
+
+</div>
+
+
+</div>
+</div>
+
+<script src="{%  static 'js/stats.js '%}">
+
+</script>
+
+
+{% endblock %}
